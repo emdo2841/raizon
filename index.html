@@ -870,7 +870,7 @@
       </div>
 
       <div>
-        <label class="block text-xs uppercase tracking-widest text-gold mb-1">Phone Number</label>
+        <label class="block text-xs uppercase tracking-widest text-gold mb-1">Phone Number (WhatsApp Number preferred)</label>
         <input type="tel" id="secondPhone" required placeholder="+234 800 000 0000"
           class="w-full bg-cream/30 border border-ink/20 px-4 py-3 text-sm text-ink focus:outline-none focus:border-gold transition-colors">
       </div>
@@ -924,7 +924,7 @@
 </div>
 
 <script>
-  const SECOND_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxjUyPsWHGQZ2RZ8w-m4veU6uN4CEDCvDcuR9Dk7GDWRPRmo5NSTO4OZKB-XN4TcnBcMg/exec";
+  const SECOND_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzif7rtuFPuBPg5jL3lJTWEprkwwYPIdKC9VSyALhfNstKM1OZSINCmkHZEJ2nvaboQ/exec";
 
   // Modal Elements
   const secondFormModal = document.getElementById('secondFormModal');
@@ -1026,139 +1026,186 @@
       });
   });
 </script>
+<!-- Modal Backdrop & Window for community hub-->
+<div id="formModal"
+  class="fixed inset-0 z-50 hidden items-center justify-center bg-ink/70 backdrop-blur-sm p-4 transition-opacity duration-300">
 
-  <!-- Modal Backdrop & Window for community hub-->
-  <div id="formModal"
-    class="fixed inset-0 z-50 hidden items-center justify-center bg-ink/70 backdrop-blur-sm p-4 transition-opacity duration-300">
+  <!-- Modal Card -->
+  <div class="relative w-full max-w-md bg-parchment border border-ink/10 p-6 sm:p-8 shadow-2xl rounded-none">
 
-    <!-- Modal Card -->
-    <div class="relative w-full max-w-md bg-parchment border border-ink/10 p-6 sm:p-8 shadow-2xl rounded-none">
+    <!-- Close Button (X) -->
+    <button id="closeModalBtn" type="button" aria-label="Close modal"
+      class="absolute top-4 right-4 text-stone hover:text-ink text-xl font-light w-8 h-8 flex items-center justify-center transition-colors cursor-pointer">
+      &times;
+    </button>
 
-      <!-- Close Button (X) -->
-      <button id="closeModalBtn" type="button" aria-label="Close modal"
-        class="absolute top-4 right-4 text-stone hover:text-ink text-xl font-light w-8 h-8 flex items-center justify-center transition-colors cursor-pointer">
-        &times;
-      </button>
+    <!-- Modal Header -->
+    <div id="hubModalHeader" class="mb-6 pr-6">
+      <p class="text-xs uppercase tracking-widest text-clay mb-1">Fashion Synergy Hub</p>
+      <h3 class="font-display text-2xl text-ink">Designer Details</h3>
+    </div>
 
-      <!-- Modal Header -->
-      <div class="mb-6 pr-6">
-        <p class="text-xs uppercase tracking-widest text-clay mb-1">Fashion Synergy Hub</p>
-        <h3 class="font-display text-2xl text-ink">Designer Details</h3>
+    <!-- The Form -->
+    <form id="clientForm" class="space-y-4">
+      <div>
+        <label class="block text-xs uppercase tracking-widest text-gold mb-1">Full Name</label>
+        <input type="text" id="name" required placeholder="John Doe"
+          class="w-full bg-cream/30 border border-ink/20 px-4 py-3 text-sm text-ink focus:outline-none focus:border-gold transition-colors">
       </div>
 
-      <!-- The Form -->
-      <form id="clientForm" class="space-y-4">
-        <div>
-          <label class="block text-xs uppercase tracking-widest text-gold mb-1">Full Name</label>
-          <input type="text" id="name" required placeholder="John Doe"
-            class="w-full bg-cream/30 border border-ink/20 px-4 py-3 text-sm text-ink focus:outline-none focus:border-gold transition-colors">
-        </div>
+      <div>
+        <label class="block text-xs uppercase tracking-widest text-gold mb-1">Email Address</label>
+        <input type="email" id="email" required placeholder="john@example.com"
+          class="w-full bg-cream/30 border border-ink/20 px-4 py-3 text-sm text-ink focus:outline-none focus:border-gold transition-colors">
+      </div>
 
-        <div>
-          <label class="block text-xs uppercase tracking-widest text-gold mb-1">Email Address</label>
-          <input type="email" id="email" required placeholder="john@example.com"
-            class="w-full bg-cream/30 border border-ink/20 px-4 py-3 text-sm text-ink focus:outline-none focus:border-gold transition-colors">
-        </div>
+      <div>
+        <label class="block text-xs uppercase tracking-widest text-gold mb-1">Phone (WhatsApp Number preferred)</label>
+        <input type="tel" id="phone" required placeholder="+234 800 000 0000"
+          class="w-full bg-cream/30 border border-ink/20 px-4 py-3 text-sm text-ink focus:outline-none focus:border-gold transition-colors">
+      </div>
 
-        <div>
-          <label class="block text-xs uppercase tracking-widest text-gold mb-1">Phone (WhatsApp Number
-            preferred)</label>
-          <input type="tel" id="phone" required placeholder="+234 800 000 0000"
-            class="w-full bg-cream/30 border border-ink/20 px-4 py-3 text-sm text-ink focus:outline-none focus:border-gold transition-colors">
-        </div>
+      <button type="submit" id="submitBtn"
+        class="w-full bg-gold text-ink font-medium uppercase tracking-widest text-xs py-3.5 hover:bg-gold/80 transition-colors cursor-pointer mt-2">
+        Submit Details
+      </button>
 
-        <button type="submit" id="submitBtn"
-          class="w-full bg-gold text-ink font-medium uppercase tracking-widest text-xs py-3.5 hover:bg-gold/80 transition-colors cursor-pointer mt-2">
-          Submit Details
-        </button>
+      <p id="formStatus" class="text-xs text-center hidden mt-2"></p>
+    </form>
 
-        <p id="formStatus" class="text-xs text-center hidden mt-2"></p>
-      </form>
+    <!-- WhatsApp Success View (Shown after submission) -->
+    <div id="hubWhatsappSuccessView" class="hidden text-center py-2 space-y-4">
+      <div class="w-12 h-12 mx-auto rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.842-1.001z"/>
+        </svg>
+      </div>
 
+      <div>
+        <h4 class="font-display text-xl text-ink mb-1">Details Submitted!</h4>
+        <p class="text-xs text-stone leading-relaxed">
+          Please join our exclusive Fashion Synergy Hub WhatsApp group to connect with designers and receive community updates.
+        </p>
+      </div>
+
+      <!-- REPLACE href WITH YOUR HUB WHATSAPP GROUP LINK -->
+      <a id="hubWhatsappGroupBtn" 
+         href="https://chat.whatsapp.com/E8jsyvpXOjRHfjMjCS5j9T" 
+         target="_blank" 
+         rel="noopener noreferrer"
+         class="inline-flex items-center justify-center gap-2 w-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-medium uppercase tracking-widest text-xs py-3.5 px-4 transition-colors cursor-pointer">
+        <span>Join WhatsApp Group</span>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+        </svg>
+      </a>
     </div>
+
   </div>
+</div>
 
-  <script>
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzUn8ItIz-skz3zdcATpCYf0ce1UOBzqFlOW3QdPnu2G8VhmGxrNYvpGJdwh-4cIID6eg/exec"; // Replace with your Web App URL
+<script>
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxFKhY1v5Nd0u4dh-uaNOEk0d132IzS5FFo4ilCiE904vcXERLTEXqVWk7fLC5RGNsR/exec";
 
-    // Modal Elements
-    const formModal = document.getElementById('formModal');
-    const openBtn = document.getElementById('openModalBtn');
-    const closeBtn = document.getElementById('closeModalBtn');
-    const clientForm = document.getElementById('clientForm');
-    const statusText = document.getElementById('formStatus');
+  // Modal Elements
+  const formModal = document.getElementById('formModal');
+  const openBtn = document.getElementById('openModalBtn');
+  const closeBtn = document.getElementById('closeModalBtn');
+  const clientForm = document.getElementById('clientForm');
+  const statusText = document.getElementById('formStatus');
+  const hubWhatsappSuccessView = document.getElementById('hubWhatsappSuccessView');
+  const hubWhatsappGroupBtn = document.getElementById('hubWhatsappGroupBtn');
+  const hubModalHeader = document.getElementById('hubModalHeader');
 
-    // Open Modal
+  // Open Modal
+  if (openBtn) {
     openBtn.addEventListener('click', () => {
       formModal.classList.remove('hidden');
       formModal.classList.add('flex');
-      document.body.style.overflow = 'hidden'; // Lock background scrolling
+      document.body.style.overflow = 'hidden';
     });
+  }
 
-    // Close Modal Function
-    function closeModal() {
-      formModal.classList.add('hidden');
-      formModal.classList.remove('flex');
-      document.body.style.overflow = ''; // Restore background scrolling
-      statusText.classList.add('hidden'); // Reset status state
-    }
-
-    // Close events
-    closeBtn.addEventListener('click', closeModal);
-
-    // Close when clicking outside the modal box
-    formModal.addEventListener('click', (e) => {
-      if (e.target === formModal) closeModal();
-    });
-
-    // Close on Escape key press
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && !formModal.classList.contains('hidden')) {
-        closeModal();
-      }
-    });
-
-    // Form Submission Logic
-    clientForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-
+  // Close Modal Function (Resets everything for next opening)
+  function closeModal() {
+    formModal.classList.add('hidden');
+    formModal.classList.remove('flex');
+    document.body.style.overflow = '';
+    
+    // Reset view back to initial form state
+    setTimeout(() => {
+      clientForm.reset();
+      clientForm.classList.remove('hidden');
+      hubWhatsappSuccessView.classList.add('hidden');
+      hubModalHeader.classList.remove('hidden');
+      statusText.classList.add('hidden');
       const submitBtn = document.getElementById('submitBtn');
+      submitBtn.disabled = false;
+      submitBtn.innerText = 'Submit Details';
+    }, 300);
+  }
 
-      submitBtn.disabled = true;
-      submitBtn.innerText = 'Submitting...';
+  // Close events
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeModal);
+  }
 
-      const payload = {
-        name: document.getElementById('name').value,
-        email: document.getElementById('email').value,
-        phone: document.getElementById('phone').value
-      };
+  // Close when clicking outside the modal box
+  formModal.addEventListener('click', (e) => {
+    if (e.target === formModal) closeModal();
+  });
 
-      fetch(SCRIPT_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      })
-        .then(() => {
-          statusText.innerText = 'Thank you! Your details have been received.';
-          statusText.className = 'text-xs text-center text-green-700 block mt-2 font-medium';
-          clientForm.reset();
+  // Close on Escape key press
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !formModal.classList.contains('hidden')) {
+      closeModal();
+    }
+  });
 
-          // Automatically close modal after 2.5 seconds on successful submission
-          setTimeout(() => {
-            closeModal();
-          }, 2500);
-        })
-        .catch(error => {
-          statusText.innerText = 'Something went wrong. Please try again.';
-          statusText.className = 'text-xs text-center text-red-600 block mt-2 font-medium';
-        })
-        .finally(() => {
-          submitBtn.disabled = false;
-          submitBtn.innerText = 'Submit Details';
-        });
+  // Close modal when user clicks the WhatsApp group button
+  if (hubWhatsappGroupBtn) {
+    hubWhatsappGroupBtn.addEventListener('click', () => {
+      setTimeout(() => {
+        closeModal();
+      }, 500);
     });
-  </script>
+  }
+
+  // Form Submission Logic
+  clientForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const submitBtn = document.getElementById('submitBtn');
+
+    submitBtn.disabled = true;
+    submitBtn.innerText = 'Submitting...';
+
+    const payload = {
+      name: document.getElementById('name').value,
+      email: document.getElementById('email').value,
+      phone: document.getElementById('phone').value
+    };
+
+    fetch(SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+      .then(() => {
+        // Show WhatsApp UI instead of auto-closing
+        clientForm.classList.add('hidden');
+        hubModalHeader.classList.add('hidden');
+        hubWhatsappSuccessView.classList.remove('hidden');
+      })
+      .catch(error => {
+        statusText.innerText = 'Something went wrong. Please try again.';
+        statusText.className = 'text-xs text-center text-red-600 block mt-2 font-medium';
+        submitBtn.disabled = false;
+        submitBtn.innerText = 'Submit Details';
+      });
+  });
+</script>
 
   <!-- ============ ENQUIRY MODAL ============ -->
   <dialog id="enquiryModal" class="w-11/12 max-w-lg m-auto backdrop:bg-ink/80">
