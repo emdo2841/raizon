@@ -1016,42 +1016,7 @@
   });
 </script>
 
-  // Form Submission Logic
-  secondClientForm.addEventListener('submit', function (e) {
-    e.preventDefault();
-
-    const secondSubmitBtn = document.getElementById('secondSubmitBtn');
-    secondSubmitBtn.disabled = true;
-    secondSubmitBtn.innerText = 'Submitting...';
-
-    const payload = {
-      name: document.getElementById('secondName').value,
-      email: document.getElementById('secondEmail').value,
-      phone: document.getElementById('secondPhone').value,
-      level: document.getElementById('secondlevel').value
-    };
-
-    fetch(SECOND_SCRIPT_URL, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    })
-      .then(() => {
-        // Show WhatsApp UI instead of auto-closing
-        secondClientForm.classList.add('hidden');
-        secondModalHeader.classList.add('hidden');
-        whatsappSuccessView.classList.remove('hidden');
-      })
-      .catch(error => {
-        secondStatusText.innerText = 'Something went wrong. Please try again.';
-        secondStatusText.className = 'text-xs text-center text-red-600 block mt-2 font-medium';
-        secondSubmitBtn.disabled = false;
-        secondSubmitBtn.innerText = 'Submit Details';
-      });
-  });
-</script>
-<!-- Modal Backdrop & Window for community hub-->
+  
 <div id="formModal"
   class="fixed inset-0 z-50 hidden items-center justify-center bg-ink/70 backdrop-blur-sm p-4 transition-opacity duration-300">
 
