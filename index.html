@@ -275,6 +275,25 @@
     <div class="max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
 
       <!-- Photo collage responsive container -->
+<!-- <div class="reveal relative h-[340px] sm:h-[460px] w-full max-w-sm sm:max-w-md mx-auto"> -->
+
+  <!-- Photo 1 -->
+  <!-- <div class="absolute top-0 left-2 sm:left-10 w-36 sm:w-56 h-52 sm:h-72 bg-white border border-ink/10 shadow-2xl shadow-ink/25 -rotate-6 rounded-2xl flex items-center justify-center overflow-hidden transition-transform duration-500 hover:rotate-0">
+    <img src="/Est. 2016 (1)-Photoroom.png" alt="Raizon Exquisite Designs" class="w-full h-full object-cover">
+  </div> -->
+
+  <!-- Photo 2 -->
+  <!-- <div class="absolute top-16 sm:top-28 right-0 w-36 sm:w-48 h-48 sm:h-60 bg-white border border-ink/10 shadow-2xl shadow-ink/25 rotate-3 rounded-2xl flex items-center justify-center overflow-hidden transition-transform duration-500 hover:rotate-0">
+    <img src="/raizon_concept.png" alt="Raizon Exquisite Designs" class="w-full h-full object-cover">
+  </div> -->
+
+  <!-- Photo 3 -->
+  <!-- <div class="absolute bottom-0 left-2 sm:left-0 w-48 sm:w-40 h-36  sm:h-48 bg-white border border-ink/10 shadow-2xl shadow-ink/25 -rotate-3 rounded-2xl flex items-center justify-center overflow-hidden transition-transform duration-500 hover:rotate-0">
+    <img src="/raizon_hub.png" alt="Raizon Exquisite Designs" class="w-full h-full object-fit">
+  </div>
+
+</div> -->
+<!-- Photo collage responsive container -->
 <div class="reveal relative h-[340px] sm:h-[460px] w-full max-w-sm sm:max-w-md mx-auto">
 
   <!-- Photo 1 -->
@@ -287,9 +306,9 @@
     <img src="/raizon_concept.png" alt="Raizon Exquisite Designs" class="w-full h-full object-cover">
   </div>
 
-  <!-- Photo 3 -->
-  <div class="absolute bottom-0 left-2 sm:left-0 w-48 sm:w-40 h-36  sm:h-48 bg-white border border-ink/10 shadow-2xl shadow-ink/25 -rotate-3 rounded-2xl flex items-center justify-center overflow-hidden transition-transform duration-500 hover:rotate-0">
-    <img src="/raizon_hub.png" alt="Raizon Exquisite Designs" class="w-full h-full object-fit">
+  <!-- Photo 3 (Wider Landscape Card) -->
+  <div class="absolute bottom-0 left- sm:left-0 w-52 sm:w-64 h-32 sm:h-44 bg-white border border-ink/10 shadow-2xl shadow-ink/25 -rotate-3 rounded-2xl flex items-center justify-center overflow-hidden transition-transform duration-500 hover:rotate-0 p-3">
+    <img src="/raizon_hub.png" alt="Raizon Exquisite Designs" class="w-full h-full object-contain">
   </div>
 
 </div>
@@ -350,7 +369,7 @@
             Raizon Exquisite Designs is our fashion and manufacturing brand, dedicated to creating expertly tailored outfits for both men and women. Renowned for our Signature Fitted Trousers, we combine precision craftsmanship with contemporary style to deliver enduring garments that fit perfectly and inspire confidence.
           </p>
           <p class="text-stone leading-relaxed max-w-lg mb-5 text-sm sm:text-base">
-            Our services include personalized fashion consultations, custom-made designs, bulk production and a carefully curated range of Ready-to-Wear (RTW) collections available for both retail and wholesale clients.
+            Our services include personalized fashion consultations, custom-made designs, bulk production, white Label and a carefully curated range of Ready-to-Wear (RTW) collections available for both retail and wholesale clients.
           </p>
           <p class="text-stone leading-relaxed max-w-lg text-sm sm:text-base">
             Guided by a commitment to exceptional comfort, versatile styling, and impeccable craftsmanship, every piece is thoughtfully designed and meticulously produced to meet the highest standards. Wherever you are in the world, Raizon Exquisite Design brings premium fashion directly to your doorstep through our global delivery service.
@@ -1064,6 +1083,15 @@
           class="w-full bg-cream/30 border border-ink/20 px-4 py-3 text-sm text-ink focus:outline-none focus:border-gold transition-colors">
       </div>
 
+      <div>
+        <label class="block text-xs uppercase tracking-widest text-gold mb-1">Level</label>
+        <select id="level" required
+          class="w-full bg-cream/30 border border-ink/20 px-4 py-3 text-sm text-ink focus:outline-none focus:border-gold transition-colors">
+          <option value="beginner" class="bg-cream text-ink">Beginner</option>
+          <option value="advance" class="bg-cream text-ink">Advance</option>
+        </select>
+      </div>
+
       <button type="submit" id="submitBtn"
         class="w-full bg-gold text-ink font-medium uppercase tracking-widest text-xs py-3.5 hover:bg-gold/80 transition-colors cursor-pointer mt-2">
         Submit Details
@@ -1087,9 +1115,9 @@
         </p>
       </div>
 
-      <!-- REPLACE href WITH YOUR HUB WHATSAPP GROUP LINK -->
+      <!-- DYNAMIC WHATSAPP BUTTON -->
       <a id="hubWhatsappGroupBtn" 
-         href="https://chat.whatsapp.com/E8jsyvpXOjRHfjMjCS5j9T" 
+         href="#" 
          target="_blank" 
          rel="noopener noreferrer"
          class="inline-flex items-center justify-center gap-2 w-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-medium uppercase tracking-widest text-xs py-3.5 px-4 transition-colors cursor-pointer">
@@ -1104,7 +1132,11 @@
 </div>
 
 <script>
-  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxFKhY1v5Nd0u4dh-uaNOEk0d132IzS5FFo4ilCiE904vcXERLTEXqVWk7fLC5RGNsR/exec";
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxd1pwidmrmAj-oUiuiBgolK0w4uYWfp3NmAWU7cKy8kXJtaS0quZ1s6aynPYEgDnA5AA/exec";
+
+  // Define WhatsApp Links for each level
+  const BEGINNER_WHATSAPP_LINK = "https://chat.whatsapp.com/BEGINNER_GROUP_LINK_HERE";
+  const ADVANCE_WHATSAPP_LINK  = "https://chat.whatsapp.com/E8jsyvpXOjRHfjMjCS5j9T";
 
   // Modal Elements
   const formModal = document.getElementById('formModal');
@@ -1179,11 +1211,21 @@
     submitBtn.disabled = true;
     submitBtn.innerText = 'Submitting...';
 
+    const selectedLevel = document.getElementById('level').value;
+
     const payload = {
       name: document.getElementById('name').value,
       email: document.getElementById('email').value,
-      phone: document.getElementById('phone').value
+      phone: document.getElementById('phone').value,
+      level: selectedLevel
     };
+
+    // Dynamically update the WhatsApp link based on selected level
+    if (selectedLevel === 'beginner') {
+      hubWhatsappGroupBtn.href = BEGINNER_WHATSAPP_LINK;
+    } else {
+      hubWhatsappGroupBtn.href = ADVANCE_WHATSAPP_LINK;
+    }
 
     fetch(SCRIPT_URL, {
       method: 'POST',
